@@ -12,7 +12,6 @@ enum ContolType {
     case next
     case prev
     
-    
     var icon: Image {
         switch(self){
         case .next:
