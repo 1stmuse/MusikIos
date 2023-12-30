@@ -14,6 +14,8 @@
 		C4E74A1E2B3FAA8B001AC9A3 /* Color.extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A1D2B3FAA8B001AC9A3 /* Color.extension.swift */; };
 		C4E74A212B3FACA7001AC9A3 /* LongButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A202B3FACA7001AC9A3 /* LongButton.swift */; };
 		C4E74A232B3FB2DD001AC9A3 /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A222B3FB2DD001AC9A3 /* ControlButton.swift */; };
+		C4E74A262B3FBB98001AC9A3 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A252B3FBB98001AC9A3 /* SongModel.swift */; };
+		C4E74A282B3FBC39001AC9A3 /* SongRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A272B3FBC39001AC9A3 /* SongRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +27,8 @@
 		C4E74A1D2B3FAA8B001AC9A3 /* Color.extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.extension.swift; sourceTree = "<group>"; };
 		C4E74A202B3FACA7001AC9A3 /* LongButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LongButton.swift; sourceTree = "<group>"; };
 		C4E74A222B3FB2DD001AC9A3 /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
+		C4E74A252B3FBB98001AC9A3 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
+		C4E74A272B3FBC39001AC9A3 /* SongRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +61,7 @@
 		C4E74A0C2B3FA8A5001AC9A3 /* Musil */ = {
 			isa = PBXGroup;
 			children = (
+				C4E74A242B3FBB84001AC9A3 /* model */,
 				C4E74A1C2B3FAA5C001AC9A3 /* extensions */,
 				C4E74A1B2B3FA8D1001AC9A3 /* presentation */,
 				C4E74A0D2B3FA8A5001AC9A3 /* MusilApp.swift */,
@@ -96,8 +101,17 @@
 			children = (
 				C4E74A202B3FACA7001AC9A3 /* LongButton.swift */,
 				C4E74A222B3FB2DD001AC9A3 /* ControlButton.swift */,
+				C4E74A272B3FBC39001AC9A3 /* SongRow.swift */,
 			);
 			path = common;
+			sourceTree = "<group>";
+		};
+		C4E74A242B3FBB84001AC9A3 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				C4E74A252B3FBB98001AC9A3 /* SongModel.swift */,
+			);
+			path = model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -170,6 +184,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4E74A262B3FBB98001AC9A3 /* SongModel.swift in Sources */,
+				C4E74A282B3FBC39001AC9A3 /* SongRow.swift in Sources */,
 				C4E74A1E2B3FAA8B001AC9A3 /* Color.extension.swift in Sources */,
 				C4E74A102B3FA8A5001AC9A3 /* MainApp.swift in Sources */,
 				C4E74A232B3FB2DD001AC9A3 /* ControlButton.swift in Sources */,

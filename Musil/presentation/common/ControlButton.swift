@@ -28,10 +28,14 @@ struct ControlButton: View {
     let type: ContolType
     let width: CGFloat
     let height: CGFloat
+    let action: () -> Void
+    
+    
+    
     
     var body: some View {
         Button {
-            
+            action()
         } label: {
             type.icon
                 .foregroundColor(.black)
@@ -45,7 +49,9 @@ struct ControlButton: View {
 
 struct ControlButton_Previews: PreviewProvider {
     static var previews: some View {
-        ControlButton(type: .play, width: 50, height: 50)
+        ControlButton(type: .next, width: 50, height: 50){
+            print("hello worl")
+        }
             .preferredColorScheme(.dark)
     }
 }
