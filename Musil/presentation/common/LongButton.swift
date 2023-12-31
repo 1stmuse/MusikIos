@@ -10,12 +10,13 @@ import SwiftUI
 struct LongButton: View {
     let label: String
     let background: Color
+    let action: () -> Void
     
     var body: some View {
        
         VStack {
             Button {
-                
+                action()
             } label: {
                 Text(label).foregroundColor(.black)
                     .font(.callout)
@@ -33,6 +34,8 @@ struct LongButton: View {
 
 struct LongButton_Previews: PreviewProvider {
     static var previews: some View {
-        LongButton(label: "Log in", background: Color.primaryColor)
+        LongButton(label: "Log in", background: Color.primaryColor){
+            
+        }
     }
 }

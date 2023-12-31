@@ -16,6 +16,12 @@
 		C4E74A232B3FB2DD001AC9A3 /* ControlButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A222B3FB2DD001AC9A3 /* ControlButton.swift */; };
 		C4E74A262B3FBB98001AC9A3 /* SongModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A252B3FBB98001AC9A3 /* SongModel.swift */; };
 		C4E74A282B3FBC39001AC9A3 /* SongRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A272B3FBC39001AC9A3 /* SongRow.swift */; };
+		C4E74A2B2B40ABFA001AC9A3 /* PlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A2A2B40ABFA001AC9A3 /* PlayerView.swift */; };
+		C4E74A2D2B40D7B1001AC9A3 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A2C2B40D7B1001AC9A3 /* LoginView.swift */; };
+		C4E74A2F2B40E020001AC9A3 /* BottomTabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A2E2B40E020001AC9A3 /* BottomTabView.swift */; };
+		C4E74A322B40E328001AC9A3 /* TabCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A312B40E328001AC9A3 /* TabCases.swift */; };
+		C4E74A352B40EB36001AC9A3 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A342B40EB36001AC9A3 /* TabItem.swift */; };
+		C4E74A372B40F413001AC9A3 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A362B40F413001AC9A3 /* CustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +35,12 @@
 		C4E74A222B3FB2DD001AC9A3 /* ControlButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControlButton.swift; sourceTree = "<group>"; };
 		C4E74A252B3FBB98001AC9A3 /* SongModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongModel.swift; sourceTree = "<group>"; };
 		C4E74A272B3FBC39001AC9A3 /* SongRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SongRow.swift; sourceTree = "<group>"; };
+		C4E74A2A2B40ABFA001AC9A3 /* PlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerView.swift; sourceTree = "<group>"; };
+		C4E74A2C2B40D7B1001AC9A3 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		C4E74A2E2B40E020001AC9A3 /* BottomTabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomTabView.swift; sourceTree = "<group>"; };
+		C4E74A312B40E328001AC9A3 /* TabCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCases.swift; sourceTree = "<group>"; };
+		C4E74A342B40EB36001AC9A3 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
+		C4E74A362B40F413001AC9A3 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +73,7 @@
 		C4E74A0C2B3FA8A5001AC9A3 /* Musil */ = {
 			isa = PBXGroup;
 			children = (
+				C4E74A302B40E2E4001AC9A3 /* helpers */,
 				C4E74A242B3FBB84001AC9A3 /* model */,
 				C4E74A1C2B3FAA5C001AC9A3 /* extensions */,
 				C4E74A1B2B3FA8D1001AC9A3 /* presentation */,
@@ -83,6 +96,8 @@
 		C4E74A1B2B3FA8D1001AC9A3 /* presentation */ = {
 			isa = PBXGroup;
 			children = (
+				C4E74A332B40EB19001AC9A3 /* custom tab bar */,
+				C4E74A292B40ABD5001AC9A3 /* screens */,
 				C4E74A1F2B3FAC7D001AC9A3 /* common */,
 			);
 			path = presentation;
@@ -112,6 +127,33 @@
 				C4E74A252B3FBB98001AC9A3 /* SongModel.swift */,
 			);
 			path = model;
+			sourceTree = "<group>";
+		};
+		C4E74A292B40ABD5001AC9A3 /* screens */ = {
+			isa = PBXGroup;
+			children = (
+				C4E74A2A2B40ABFA001AC9A3 /* PlayerView.swift */,
+				C4E74A2C2B40D7B1001AC9A3 /* LoginView.swift */,
+				C4E74A2E2B40E020001AC9A3 /* BottomTabView.swift */,
+			);
+			path = screens;
+			sourceTree = "<group>";
+		};
+		C4E74A302B40E2E4001AC9A3 /* helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C4E74A312B40E328001AC9A3 /* TabCases.swift */,
+			);
+			path = helpers;
+			sourceTree = "<group>";
+		};
+		C4E74A332B40EB19001AC9A3 /* custom tab bar */ = {
+			isa = PBXGroup;
+			children = (
+				C4E74A342B40EB36001AC9A3 /* TabItem.swift */,
+				C4E74A362B40F413001AC9A3 /* CustomView.swift */,
+			);
+			path = "custom tab bar";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -186,7 +228,13 @@
 			files = (
 				C4E74A262B3FBB98001AC9A3 /* SongModel.swift in Sources */,
 				C4E74A282B3FBC39001AC9A3 /* SongRow.swift in Sources */,
+				C4E74A352B40EB36001AC9A3 /* TabItem.swift in Sources */,
+				C4E74A2F2B40E020001AC9A3 /* BottomTabView.swift in Sources */,
 				C4E74A1E2B3FAA8B001AC9A3 /* Color.extension.swift in Sources */,
+				C4E74A2D2B40D7B1001AC9A3 /* LoginView.swift in Sources */,
+				C4E74A372B40F413001AC9A3 /* CustomView.swift in Sources */,
+				C4E74A2B2B40ABFA001AC9A3 /* PlayerView.swift in Sources */,
+				C4E74A322B40E328001AC9A3 /* TabCases.swift in Sources */,
 				C4E74A102B3FA8A5001AC9A3 /* MainApp.swift in Sources */,
 				C4E74A232B3FB2DD001AC9A3 /* ControlButton.swift in Sources */,
 				C4E74A0E2B3FA8A5001AC9A3 /* MusilApp.swift in Sources */,

@@ -28,6 +28,7 @@ struct ControlButton: View {
     let type: ContolType
     let width: CGFloat
     let height: CGFloat
+    let iconSize: CGFloat
     let action: () -> Void
     
     
@@ -38,9 +39,12 @@ struct ControlButton: View {
             action()
         } label: {
             type.icon
+                .resizable()
+                .scaledToFit()
+                .frame(width: iconSize, height: iconSize)
                 .foregroundColor(.black)
         }
-        .frame(width: width, height: height)
+        .frame(width: width, height: height, alignment: .center)
         .background(Color.white)
         .clipShape(Circle())
 
@@ -49,7 +53,7 @@ struct ControlButton: View {
 
 struct ControlButton_Previews: PreviewProvider {
     static var previews: some View {
-        ControlButton(type: .next, width: 50, height: 50){
+        ControlButton(type: .next, width: 50, height: 50, iconSize: 10){
             print("hello worl")
         }
             .preferredColorScheme(.dark)
