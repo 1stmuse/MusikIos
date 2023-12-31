@@ -22,6 +22,8 @@
 		C4E74A322B40E328001AC9A3 /* TabCases.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A312B40E328001AC9A3 /* TabCases.swift */; };
 		C4E74A352B40EB36001AC9A3 /* TabItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A342B40EB36001AC9A3 /* TabItem.swift */; };
 		C4E74A372B40F413001AC9A3 /* CustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A362B40F413001AC9A3 /* CustomView.swift */; };
+		C4E74A3A2B410A85001AC9A3 /* SessionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A392B410A85001AC9A3 /* SessionManager.swift */; };
+		C4E74A3C2B410E75001AC9A3 /* SplashScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E74A3B2B410E75001AC9A3 /* SplashScreen.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +43,8 @@
 		C4E74A312B40E328001AC9A3 /* TabCases.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabCases.swift; sourceTree = "<group>"; };
 		C4E74A342B40EB36001AC9A3 /* TabItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItem.swift; sourceTree = "<group>"; };
 		C4E74A362B40F413001AC9A3 /* CustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomView.swift; sourceTree = "<group>"; };
+		C4E74A392B410A85001AC9A3 /* SessionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SessionManager.swift; sourceTree = "<group>"; };
+		C4E74A3B2B410E75001AC9A3 /* SplashScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreen.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,10 +77,11 @@
 		C4E74A0C2B3FA8A5001AC9A3 /* Musil */ = {
 			isa = PBXGroup;
 			children = (
+				C4E74A382B410A62001AC9A3 /* session manager */,
 				C4E74A302B40E2E4001AC9A3 /* helpers */,
 				C4E74A242B3FBB84001AC9A3 /* model */,
 				C4E74A1C2B3FAA5C001AC9A3 /* extensions */,
-				C4E74A1B2B3FA8D1001AC9A3 /* presentation */,
+				C4E74A1B2B3FA8D1001AC9A3 /* views */,
 				C4E74A0D2B3FA8A5001AC9A3 /* MusilApp.swift */,
 				C4E74A0F2B3FA8A5001AC9A3 /* MainApp.swift */,
 				C4E74A112B3FA8A7001AC9A3 /* Assets.xcassets */,
@@ -93,14 +98,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		C4E74A1B2B3FA8D1001AC9A3 /* presentation */ = {
+		C4E74A1B2B3FA8D1001AC9A3 /* views */ = {
 			isa = PBXGroup;
 			children = (
 				C4E74A332B40EB19001AC9A3 /* custom tab bar */,
 				C4E74A292B40ABD5001AC9A3 /* screens */,
 				C4E74A1F2B3FAC7D001AC9A3 /* common */,
 			);
-			path = presentation;
+			path = views;
 			sourceTree = "<group>";
 		};
 		C4E74A1C2B3FAA5C001AC9A3 /* extensions */ = {
@@ -135,6 +140,7 @@
 				C4E74A2A2B40ABFA001AC9A3 /* PlayerView.swift */,
 				C4E74A2C2B40D7B1001AC9A3 /* LoginView.swift */,
 				C4E74A2E2B40E020001AC9A3 /* BottomTabView.swift */,
+				C4E74A3B2B410E75001AC9A3 /* SplashScreen.swift */,
 			);
 			path = screens;
 			sourceTree = "<group>";
@@ -154,6 +160,14 @@
 				C4E74A362B40F413001AC9A3 /* CustomView.swift */,
 			);
 			path = "custom tab bar";
+			sourceTree = "<group>";
+		};
+		C4E74A382B410A62001AC9A3 /* session manager */ = {
+			isa = PBXGroup;
+			children = (
+				C4E74A392B410A85001AC9A3 /* SessionManager.swift */,
+			);
+			path = "session manager";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,12 +240,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4E74A3C2B410E75001AC9A3 /* SplashScreen.swift in Sources */,
 				C4E74A262B3FBB98001AC9A3 /* SongModel.swift in Sources */,
 				C4E74A282B3FBC39001AC9A3 /* SongRow.swift in Sources */,
 				C4E74A352B40EB36001AC9A3 /* TabItem.swift in Sources */,
 				C4E74A2F2B40E020001AC9A3 /* BottomTabView.swift in Sources */,
 				C4E74A1E2B3FAA8B001AC9A3 /* Color.extension.swift in Sources */,
 				C4E74A2D2B40D7B1001AC9A3 /* LoginView.swift in Sources */,
+				C4E74A3A2B410A85001AC9A3 /* SessionManager.swift in Sources */,
 				C4E74A372B40F413001AC9A3 /* CustomView.swift in Sources */,
 				C4E74A2B2B40ABFA001AC9A3 /* PlayerView.swift in Sources */,
 				C4E74A322B40E328001AC9A3 /* TabCases.swift in Sources */,

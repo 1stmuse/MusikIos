@@ -8,19 +8,36 @@
 import SwiftUI
 
 struct MainApp: View {
+    
+    @EnvironmentObject private var sessionManager: SessionManager
+    
+//    @ObservedObject private var sessionManager = SessionManager()
+    
     var body: some View {
-        VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundColor(.accentColor)
-            Text("Hello, world! Niggar mi")
+        ZStack {
+            SplashScreen()
+                .opacity(sessionManager.currentState == .splashScreen ? 1 : 0)
+            
+            LoginView()
+                .opacity(sessionManager.currentState == .login ? 1 : 0)
+            
+            BottomTabView()
+                .opacity(sessionManager.currentState == .mainView ? 1 : 0)
         }
-        .padding()
+        .onAppear{
+            withAnimation {
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                    sessionManager.loadSession()
+                }
+            }
+        }
+       
     }
 }
 
 struct MainApp_Previews: PreviewProvider {
     static var previews: some View {
         MainApp()
+            .environmentObject(SessionManager())
     }
 }

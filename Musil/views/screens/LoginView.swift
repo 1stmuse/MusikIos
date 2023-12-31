@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @EnvironmentObject private var sessionManager: SessionManager
+    
     var body: some View {
         ZStack(alignment:.bottomLeading){
             Image("loginBg")
@@ -24,7 +27,7 @@ struct LoginView: View {
                 }.padding(.bottom, 40)
                 
                 LongButton(label: "Log In", background: .primaryColor) {
-                    
+                    sessionManager.goToMainView()
                 }
                 LongButton(label: "Sign Up", background: .secondaryColor) {
                     
@@ -41,5 +44,6 @@ struct LoginView: View {
 struct LoginView_Previews: PreviewProvider {
     static var previews: some View {
         LoginView()
+            .environmentObject(SessionManager())
     }
 }

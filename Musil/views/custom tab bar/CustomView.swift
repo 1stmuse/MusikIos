@@ -8,20 +8,25 @@
 import SwiftUI
 
 struct CustomView: View {
+    @Binding var selectedTab: Tabs
     var body: some View {
-        HStack(){
+        HStack(alignment: .center){
             ForEach(Tabs.allCases, id: \.self) { tab in
-                TabItem(item: tab, selected: .constant(false))
+                TabItem(item: tab, selected: selectedTab == tab ? true : false){ res in
+                    selectedTab = res
+                }
             }
         }
         .frame(maxWidth: .infinity)
+        .frame(height: 70)
         .padding(.horizontal, 10)
+        .padding(.top, 20)
         .background(Color.lightBackground)
     }
 }
 
 struct CustomView_Previews: PreviewProvider {
     static var previews: some View {
-        CustomView()
+        CustomView(selectedTab: .constant(.Home))
     }
 }

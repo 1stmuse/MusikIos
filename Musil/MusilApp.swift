@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct MusilApp: App {
+    @ObservedObject private var sessionManager = SessionManager()
     var body: some Scene {
         WindowGroup {
             MainApp()
+                .environmentObject(sessionManager)
         }
     }
 }
