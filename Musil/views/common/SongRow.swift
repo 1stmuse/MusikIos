@@ -14,14 +14,13 @@ struct SongRow: View {
     var body: some View {
         HStack(){
             HStack(spacing:15){
-                Image(item.image)
-                    .resizable()
-                    .scaledToFit()
+                ImageView(url: item.md5Image)
+                    .cornerRadius(15)
                     .frame(width: 80, height: 90)
                 
                 VStack(spacing: 20){
                     Text(item.title)
-                    Text(item.artist)
+                    Text(item.artist.name)
                 }
             }//END OF HSTACK
             Spacer()
@@ -39,7 +38,7 @@ struct SongRow: View {
 
 struct SongRow_Previews: PreviewProvider {
     static var previews: some View {
-        SongRow(item: .init(artist: "Davido", title: "Unavailable", image: "davido"))
+        SongRow(item: demoSong[0])
             .preferredColorScheme(.dark)
     }
 }

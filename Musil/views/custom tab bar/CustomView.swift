@@ -22,6 +22,7 @@ struct CustomView: View {
         .padding(.horizontal, 10)
         .padding(.top, 20)
         .background(Color.lightBackground)
+        
     }
 }
 

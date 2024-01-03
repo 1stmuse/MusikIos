@@ -17,12 +17,15 @@ struct MainApp: View {
         ZStack {
             SplashScreen()
                 .opacity(sessionManager.currentState == .splashScreen ? 1 : 0)
+                .animation(.easeIn, value: sessionManager.currentState)
             
             LoginView()
                 .opacity(sessionManager.currentState == .login ? 1 : 0)
+                .animation(.easeIn, value: sessionManager.currentState)
             
             BottomTabView()
                 .opacity(sessionManager.currentState == .mainView ? 1 : 0)
+                .animation(.easeIn, value: sessionManager.currentState)
         }
         .onAppear{
             withAnimation {

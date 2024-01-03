@@ -15,19 +15,17 @@ struct PlayerView: View {
     var body: some View {
         ZStack{
             VStack(alignment:.leading){
-                Image(item.image)
-                    .resizable()
-//                    .scaledToFit()
-                    .frame(height: 400)
-                    .border(.white)
+                ImageView(url: item.md5Image)
                     .cornerRadius(30)
+                    .frame(height: 400)
+                    
                 
                 VStack(alignment: .leading, spacing: 10){
                     Text(item.title)
                         .font(.headline)
                         .foregroundColor(.white)
                     
-                    Text(item.artist)
+                    Text(item.artist.name)
                         .foregroundColor(.white)
                 }//END OF VSTACK
                 .padding(.vertical, 30)
@@ -101,6 +99,6 @@ struct PlayerView: View {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView(item: .init(artist: "Davido", title: "Unavailable (acoustic version)", image: "davido"))
+        PlayerView(item: demoSong[0])
     }
 }

@@ -9,13 +9,14 @@ import SwiftUI
 
 struct BottomTabView: View {
     
+   
     @EnvironmentObject private var sessionManager: SessionManager
     @State private var selectedTab: Tabs = .Home
     
     var body: some View {
-        VStack(){
+        ZStack(alignment:.bottom){
             ZStack {
-                Color.red
+                HomeView()
                     .opacity(selectedTab == .Home ? 1.0 : 0.0)
                     .ignoresSafeArea()
                 Color.green
@@ -23,14 +24,11 @@ struct BottomTabView: View {
                     .ignoresSafeArea()
             }
            
-//            Spacer()
             CustomView(selectedTab: $selectedTab)
             
         }
+        .ignoresSafeArea()
         .background(Color.background)
-        .onAppear{
-//            sessionManager.logOut()
-        }
 
         
     }
