@@ -14,20 +14,30 @@ struct BottomTabView: View {
     @State private var selectedTab: Tabs = .Home
     
     var body: some View {
-        ZStack(alignment:.bottom){
+        VStack(){
             ZStack {
-                HomeView()
-                    .opacity(selectedTab == .Home ? 1.0 : 0.0)
-                    .ignoresSafeArea()
-                Color.green
-                    .opacity(selectedTab == .Explore ? 1.0 : 0.0)
-                    .ignoresSafeArea()
+                
+                switch selectedTab {
+                case .Home:
+                        HomeView()
+                    
+                case .Explore:
+                    Color.green
+                        .opacity(selectedTab == .Explore ? 1.0 : 0.0)
+                        .ignoresSafeArea()
+                case .Others:
+                    Text("Othwrs")
+                case .Library:
+                    Text("Library")
+                }
+               
             }
+            Spacer()
            
             CustomView(selectedTab: $selectedTab)
             
         }
-        .ignoresSafeArea()
+//        .ignoresSafeArea()
         .background(Color.background)
 
         

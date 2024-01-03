@@ -11,7 +11,7 @@ struct HomeView: View {
     @ObservedObject private var vm = SongViewModel()
   
     var body: some View {
-        NavigationView {
+       
             ScrollView{
                 VStack {
                     header
@@ -32,13 +32,10 @@ struct HomeView: View {
                                     Text(vm.songs.first!.title)
                                         .font(.system(.headline, design: .rounded, weight: .bold))
                                     Text("Duration \(vm.songs.first!.duration)")
-                                }
-                                    .frame(maxWidth: .infinity, maxHeight: .infinity)
+                                }.frame(maxWidth: .infinity, maxHeight: .infinity)
                                     .background(Color.black.opacity(0.5))
                                 
                             )
-                        
-                            
                         
                     }
                 }
@@ -49,10 +46,12 @@ struct HomeView: View {
             .background(Color.primary)
             .foregroundColor(.white)
            
-        }
-        .task {
-           await vm.loadSong()
-        }
+            .task {
+               await vm.loadSong()
+            }
+           
+        
+        
             
     }
         

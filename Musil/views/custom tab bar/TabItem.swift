@@ -19,7 +19,7 @@ struct TabItem: View {
                     .resizable()
                     .renderingMode(.template)
                     .scaledToFit()
-                    .frame(width: geo.size.width, height: 30)
+                    .frame(width: geo.size.width, height: 25)
                     .foregroundColor(selected ? .white : .background)
                 Text(item.rawValue)
                     .foregroundColor(selected ? .white : .background)

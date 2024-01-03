@@ -15,17 +15,25 @@ struct MainApp: View {
     
     var body: some View {
         ZStack {
-            SplashScreen()
-                .opacity(sessionManager.currentState == .splashScreen ? 1 : 0)
-                .animation(.easeIn, value: sessionManager.currentState)
             
-            LoginView()
-                .opacity(sessionManager.currentState == .login ? 1 : 0)
-                .animation(.easeIn, value: sessionManager.currentState)
+            switch sessionManager.currentState {
+                
+            case .login:
+                LoginView()
+                    .opacity(sessionManager.currentState == .login ? 1 : 0)
+                    .animation(.easeIn, value: sessionManager.currentState)
+            case .mainView:
+                BottomTabView()
+                    .opacity(sessionManager.currentState == .mainView ? 1 : 0)
+                    .animation(.easeIn, value: sessionManager.currentState)
+                
+            case .splashScreen:
+                SplashScreen()
+                    .opacity(sessionManager.currentState == .splashScreen ? 1 : 0)
+                    .animation(.easeIn, value: sessionManager.currentState)
+            }
             
-            BottomTabView()
-                .opacity(sessionManager.currentState == .mainView ? 1 : 0)
-                .animation(.easeIn, value: sessionManager.currentState)
+           
         }
         .onAppear{
             withAnimation {

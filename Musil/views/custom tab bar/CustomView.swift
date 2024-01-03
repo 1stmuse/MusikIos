@@ -18,7 +18,7 @@ struct CustomView: View {
             }
         }
         .frame(maxWidth: .infinity)
-        .frame(height: 70)
+        .frame(height: 60)
         .padding(.horizontal, 10)
         .padding(.top, 20)
         .background(Color.lightBackground)
