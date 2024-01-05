@@ -24,6 +24,7 @@ struct MainApp: View {
                     .animation(.easeIn, value: sessionManager.currentState)
             case .mainView:
                 BottomTabView()
+                    
                     .opacity(sessionManager.currentState == .mainView ? 1 : 0)
                     .animation(.easeIn, value: sessionManager.currentState)
                 

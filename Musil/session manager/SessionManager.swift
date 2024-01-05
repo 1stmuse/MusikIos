@@ -12,6 +12,8 @@ class SessionManager: ObservableObject {
     
     @AppStorage("hasLoggedIn") private var hasLoggedIn: Bool = false
     
+    @Published var showBottomTab: Bool = true
+    
     @Published private(set) var currentState: session = .splashScreen
     
     enum session {
@@ -37,5 +39,7 @@ class SessionManager: ObservableObject {
             currentState = .login
         }
     }
+    
+    
     
 }

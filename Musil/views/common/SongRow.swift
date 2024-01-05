@@ -14,12 +14,13 @@ struct SongRow: View {
     var body: some View {
         HStack(){
             HStack(spacing:15){
-                ImageView(url: item.md5Image)
+                ImageView(url: item.artist.picture!)
                     .cornerRadius(15)
                     .frame(width: 80, height: 90)
                 
-                VStack(spacing: 20){
+                VStack(alignment: .leading, spacing: 20){
                     Text(item.title)
+                        .lineLimit(1)
                     Text(item.artist.name)
                 }
             }//END OF HSTACK

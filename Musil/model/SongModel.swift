@@ -15,7 +15,7 @@ struct SongResponse: Codable {
     }
 }
 
-struct Track: Codable {
+struct Track: Codable, Hashable {
     let data: [SongModel]
     
     enum CodingKeys: String, CodingKey {
@@ -24,7 +24,7 @@ struct Track: Codable {
 }
 
 
-struct SongModel: Codable , Identifiable {
+struct SongModel: Codable , Identifiable, Hashable {
     let id: Int
    
     let title, titleShort, titleVersion: String

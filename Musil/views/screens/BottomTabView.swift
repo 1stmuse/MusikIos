@@ -9,9 +9,10 @@ import SwiftUI
 
 struct BottomTabView: View {
     
-   
-    @EnvironmentObject private var sessionManager: SessionManager
+
     @State private var selectedTab: Tabs = .Home
+    @State var showBottomTab: Bool = true
+    @ObservedObject private var vm = SongViewModel()
     
     var body: some View {
         VStack(){
@@ -19,7 +20,8 @@ struct BottomTabView: View {
                 
                 switch selectedTab {
                 case .Home:
-                        HomeView()
+                        HomeView(showBottomTab: $showBottomTab)
+                        .environmentObject(vm)
                     
                 case .Explore:
                     Color.green
@@ -33,10 +35,19 @@ struct BottomTabView: View {
                
             }
             Spacer()
+            
+         
+            if showBottomTab {
+                CustomView(selectedTab: $selectedTab)
+                    
+            } 
+                
+            
            
-            CustomView(selectedTab: $selectedTab)
+           
             
         }
+       
 //        .ignoresSafeArea()
         .background(Color.background)
 
@@ -47,6 +58,6 @@ struct BottomTabView: View {
 struct BottomTabView_Previews: PreviewProvider {
     static var previews: some View {
         BottomTabView()
-            .environmentObject(SessionManager())
+            
     }
 }

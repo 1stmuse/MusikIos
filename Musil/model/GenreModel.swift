@@ -6,20 +6,24 @@
 //
 
 import Foundation
+import SwiftUI
 
-struct Genre: Codable {
-    let id: Int
-    let name: String
-    let picture: String
-    let pictureSmall, pictureMedium, pictureBig, pictureXl: String
-    let type: String
-
-    enum CodingKeys: String, CodingKey {
-        case id, name, picture
-        case pictureSmall = "picture_small"
-        case pictureMedium = "picture_medium"
-        case pictureBig = "picture_big"
-        case pictureXl = "picture_xl"
-        case type
-    }
+struct Genre: Identifiable {
+    let id = UUID()
+    let title: String
+    let label: String
+    let color: Color
+    
 }
+
+
+let genres: [Genre] = [
+    .init(title: "Soft Jazz", label: "Jazz", color: .blue),
+    .init(title: "R&B", label: "R&B", color: .yellow),
+    .init(title: "Afrobeats", label: "Afrobeats", color: .purple),
+    .init(title: "Dark Metal", label: "Metal", color: .red),
+    .init(title: "Classical", label: "Classical", color: .green),
+    .init(title: "Rock", label: "Rock", color: .indigo),
+    .init(title: "Alternative", label: "Alternative", color: .orange),
+    .init(title: "Dance", label: "Dance", color: .mint)
+]

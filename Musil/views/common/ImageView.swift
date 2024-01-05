@@ -21,13 +21,19 @@ struct ImageView: View {
 //                    .scaledToFit()
                    
             case .failure(_):
-                Color.red
+                Image("default")
+                    .resizable()
+                    .renderingMode(.original)
                    
             case .empty:
-                Color.blue
+                Image("default")
+                    .resizable()
+                    .renderingMode(.original)
                     
             @unknown default:
-                Color.blue
+                Image("default")
+                    .resizable()
+                    .renderingMode(.original)
             }
         }
         

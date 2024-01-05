@@ -17,6 +17,9 @@ class SongViewModel: ObservableObject {
     
     init(){
         service = ServiceManager.shared
+        Task {
+            await loadSong()
+        }
     }
     
     
@@ -28,9 +31,11 @@ class SongViewModel: ObservableObject {
                 switch result {
                 case let .success(res):
                     self?.songs = res.tracks.data
+                    self?.isLoading = false
                   
                 case let .failure(error):
                     print("the error \(error.localizedDescription)")
+                    self?.isLoading = false
                     self?.error = error
                 }
             })

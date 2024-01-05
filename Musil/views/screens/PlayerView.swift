@@ -8,46 +8,59 @@
 import SwiftUI
 
 struct PlayerView: View {
-    let item:SongModel
+    @ObservedObject var vm = AudioPlayer()
+    let item: SongModel
+    @Binding var showBottomTab: Bool
     @State private var h: CGFloat = 40
     @State private var showLyrics = false
     
     var body: some View {
         ZStack{
-            VStack(alignment:.leading){
-                ImageView(url: item.md5Image)
-                    .cornerRadius(30)
-                    .frame(height: 400)
-                    
-                
-                VStack(alignment: .leading, spacing: 10){
-                    Text(item.title)
-                        .font(.headline)
-                        .foregroundColor(.white)
-                    
-                    Text(item.artist.name)
-                        .foregroundColor(.white)
-                }//END OF VSTACK
-                .padding(.vertical, 30)
-                Divider()
-                    .frame(alignment: .leading)
-                    .background(Color.lightBackground)
-                    .overlay(
-                        Divider()
-                            .frame(width: 100, height: 2, alignment: .leading)
-                            .background(Color.white)
-                    )
-                control
-                Spacer()
-            }
             
-            .padding(.horizontal, 20)
-            .padding(.top, 90)
-            .background(Color.background)
-            .onTapGesture {
-                withAnimation {
-                    showLyrics = false
+            ScrollView {
+                Button {
+                  showBottomTab = false
+                } label: {
+                    Text("clicke me")
+                        .padding(.top, 200)
                 }
+
+                VStack(alignment:.leading){
+                    ImageView(url: item.artist.picture!)
+                        .cornerRadius(30)
+                        .frame(height: 400)
+                        
+                    
+                    VStack(alignment: .leading, spacing: 10){
+                        Text(item.title)
+                            .font(.headline)
+                            .foregroundColor(.white)
+                        
+                        Text(item.artist.name)
+                            .foregroundColor(.white)
+                    }//END OF VSTACK
+                    .padding(.vertical, 30)
+                    Divider()
+                        .frame(alignment: .leading)
+                        .background(Color.lightBackground)
+                        .overlay(
+                            Divider()
+                                .frame(width: 100, height: 2, alignment: .leading)
+                                .background(Color.white)
+                        )
+                    control
+                    Spacer()
+                }
+                
+                .padding(.horizontal, 20)
+                .padding(.top, 70)
+                .background(Color.background)
+                .onTapGesture {
+                    withAnimation {
+                        showLyrics = false
+                    }
+                }
+                
             }
             .overlay(alignment: .bottom) {
                 VStack{
@@ -65,9 +78,13 @@ struct PlayerView: View {
                 }
                     
             }// END OF OVERLAY
+            .background(Color.background)
             
            
             
+        }// END OF ZSTACK
+        .onDisappear{
+            showBottomTab = true
         }
         .ignoresSafeArea()
         
@@ -83,6 +100,11 @@ struct PlayerView: View {
             }
             Spacer()
             ControlButton(type: .play, width: 50, height: 50, iconSize: 20) {
+                if vm.isPlaying {
+                    vm.pause()
+                } else {
+                    vm.play(song: item)
+                }
                 
             }
             Spacer()
@@ -99,6 +121,9 @@ struct PlayerView: View {
 
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
-        PlayerView(item: demoSong[0])
+        NavigationView {
+            PlayerView(item: demoSong[0], showBottomTab: .constant(true))
+        }
+        
     }
 }
