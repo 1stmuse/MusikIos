@@ -32,7 +32,7 @@ class ServiceManager {
     
     func getSongs(completionHandler: @escaping (Result<SongResponse, ApiError>) -> ()) async {
       
-        let trackUrl = "https://api.deezer.com/chart"
+        let trackUrl = "\(BASE_URL)chart"
         
         guard let url = URL(string: trackUrl) else {
             
@@ -56,6 +56,7 @@ class ServiceManager {
         } catch {
             
             DispatchQueue.main.async {
+                print(error)
                 completionHandler(.failure(ApiError.NotFound))
             }
         }

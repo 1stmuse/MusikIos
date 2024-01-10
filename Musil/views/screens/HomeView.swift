@@ -10,6 +10,7 @@ import SwiftUI
 struct HomeView: View {
     @EnvironmentObject var vm: SongViewModel
     @Binding var showBottomTab: Bool
+    let audioP = AudioPlayer()
    
     
     var body: some View {
@@ -40,7 +41,7 @@ struct HomeView: View {
                                         ControlButton(type: .play, width: 40, height: 40, iconSize: 15) {
                                             
                                         }
-                                        Text(vm.songs.first!.title)
+                                        Text(vm.songs.first!.title ?? "Title")
                                             .font(.system(.headline, design: .rounded, weight: .bold))
                                         Text("Duration \(vm.songs.first!.duration)")
                                     }.frame(maxWidth: .infinity, maxHeight: .infinity)
@@ -71,8 +72,12 @@ struct HomeView: View {
             .background(Color.background)
             .foregroundColor(.white)
             .navigationDestination(for: SongModel.self, destination: { song in
-                PlayerView(item: song, showBottomTab: $showBottomTab)
+                PlayerView(vm: audioP, item: song, showBottomTab: $showBottomTab)
             })
+            .alert(isPresented: $vm.hasError) {
+                Alert(title: Text("\(vm.error?.description ?? "scf")" ))
+            }
+            
             
          
         }

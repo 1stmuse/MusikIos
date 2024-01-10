@@ -27,7 +27,7 @@ struct Track: Codable, Hashable {
 struct SongModel: Codable , Identifiable, Hashable {
     let id: Int
    
-    let title, titleShort, titleVersion: String
+    let title, titleShort, titleVersion: String?
     let link: String
     let duration: Int
     let position: Int

@@ -11,13 +11,13 @@ import AVFoundation
 
 class AudioPlayer: ObservableObject {
     
-    static let shared = AudioPlayer()
     
     private var audioPlayer: AVPlayer?
+    private var audioPlayer2: AVAudioPlayer?
     @Published var currentSongPlaying: SongModel? = nil
     @Published private(set) var isPlaying:Bool = false
-    @Published var duration: TimeInterval = 0.0
-    @Published var currentTime: TimeInterval = 0.0
+    @Published var duration: Double = 0.0
+    @Published var currentTime: Double = 0.0
     
     //    init(currentSongPlaying: SongModel){
     //        self.currentSongPlaying = currentSongPlaying
@@ -27,73 +27,127 @@ class AudioPlayer: ObservableObject {
     //    }
     
     init () {
-        do{
-            try AVAudioSession.sharedInstance().setCategory(.playback, options: .duckOthers)
-            try AVAudioSession.sharedInstance().setActive(true)
+        
+    }
+    
+    deinit {
+        
+    }
+    
+    func load(song: SongModel){
+        
+        if currentSongPlaying == nil {
+            isPlaying = false
+            currentSongPlaying = song
+            if let url = URL(string: song.preview) {
+                audioPlayer = try AVPlayer(url: url)
+            }
+        } else {
+            guard let id = currentSongPlaying?.id else {
+               return
+           }
+           
+           if song.id == id {
+               return
+           }else {
+               audioPlayer?.replaceCurrentItem(with: nil)
+               isPlaying = false
+               currentSongPlaying = song
+               
+               if let url = URL(string: song.preview) {
+                   audioPlayer = try AVPlayer(url: url)
+               }
+           }
         }
-        catch{
-            print("the error \(error)")
-            // report for an error
-        }
+        
+         
+       
+        
     }
     
     func play(song: SongModel){
-        currentSongPlaying = song
-        if let url = URL(string: song.preview) {
-            audioPlayer = try? AVPlayer(url: url)
-        }
+        
+//        if let id = currentSongPlaying?.id {
+//            guard song.id != id else {return}
+//        }
+        
         
         guard let player = audioPlayer else {
-            print("cannot play mediw")
+            print("cannot play diw")
             return
         }
         
-        player.play()
-        isPlaying = true
-        //        duration = player.currentItem?.duration ?? CMTime()
-        //            currentTime = player.currentTime()
+//        if isPlaying == true {
+//            player.pause()
+//            isPlaying = false
+//        } else {
+            player.play()
+            isPlaying = true
+            player.addProgressObserver { dur, tm in
+              
+                self.duration = dur
+                self.currentTime = tm
+            }
+//        }
+        
+        
+        
+        
+
         
     }
     
-    //    func play(song: SongModel){
-    //        guard let url = URL(string: song.preview) else { return }
-    //
-    //        do {
-    //            let soundData = try Data(contentsOf: url)
-    //
-    //            self.audioPlayer = try AVAudioPlayer(data: soundData)
-    //            guard let audioPlayer = audioPlayer else { return }
-    //            audioPlayer.prepareToPlay()
-    //
-    //            if audioPlayer.isPlaying {
-    //                isPlaying = false
-    //                audioPlayer.pause()
-    //                duration = audioPlayer.duration
-    //                currentTime = audioPlayer.currentTime
-    //            } else {
-    //                isPlaying = true
-    //                duration = audioPlayer.duration
-    //                currentTime = audioPlayer.currentTime
-    //                audioPlayer.play()
-    //            }
-    //
-    //        } catch {
-    //
-    //        }
-    //    }
+    func stop(){
+        guard isPlaying, audioPlayer != nil else {
+            return
+        }
+      
+        audioPlayer?.replaceCurrentItem(with: nil)
+        isPlaying = false
+      
+        
+    }
+    
+ 
     
     func pause(){
         
         guard isPlaying, audioPlayer != nil else {
             return
         }
+        isPlaying = false
         
         audioPlayer?.pause()
-        isPlaying = false
+        
         //        duration = audioPlayer?.currentItem?.duration ?? CMTime()
         //        currentTime = audioPlayer?.currentTime()
         
     }
     
+//    func removePeriodicTimeObserver() {
+//        
+//        guard let player = audioPlayer else {
+//            print("cannot play mediw")
+//            return
+//        }
+//        // If a time observer exists, remove it
+//        if let token = timeObserverToken {
+//            player.removeTimeObserver(token)
+//            timeObserverToken = nil
+//        }
+//    }
     
+}
+
+extension AVPlayer {
+    func addProgressObserver(action:@escaping ((Double, Double) -> Void)) -> Any {
+        return self.addPeriodicTimeObserver(forInterval: CMTime.init(value: 1, timescale: 1), queue: .main, using: { time in
+            if let duration = self.currentItem?.duration {
+                let duration = CMTimeGetSeconds(duration), time = CMTimeGetSeconds(time)
+                let progress = (time/duration)
+//                print("the progress ooo \(time)")
+                action(duration, time)
+            }
+        })
+    }
 }

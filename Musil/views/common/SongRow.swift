@@ -19,7 +19,7 @@ struct SongRow: View {
                     .frame(width: 80, height: 90)
                 
                 VStack(alignment: .leading, spacing: 20){
-                    Text(item.title)
+                    Text(item.title ?? "Ttitle")
                         .lineLimit(1)
                     Text(item.artist.name)
                 }

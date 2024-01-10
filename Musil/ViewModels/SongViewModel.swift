@@ -12,6 +12,7 @@ class SongViewModel: ObservableObject {
     @Published private(set) var songs: [SongModel] = []
     @Published private(set) var isLoading: Bool = false
     @Published private(set) var error: ApiError? = nil
+    @Published var hasError:Bool = false
     
     let service: ServiceManager
     
@@ -35,6 +36,7 @@ class SongViewModel: ObservableObject {
                   
                 case let .failure(error):
                     print("the error \(error.localizedDescription)")
+                    self?.hasError = true
                     self?.isLoading = false
                     self?.error = error
                 }

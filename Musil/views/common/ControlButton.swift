@@ -11,6 +11,7 @@ enum ContolType {
     case play
     case next
     case prev
+    case pause
     
     var icon: Image {
         switch(self){
@@ -20,7 +21,10 @@ enum ContolType {
             return Image(systemName: "play.fill")
         case .prev:
            return  Image(systemName: "backward.end.fill")
+        case .pause:
+            return Image(systemName: "pause.circle")
         }
+    
     }
 }
 

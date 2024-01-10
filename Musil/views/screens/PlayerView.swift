@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct PlayerView: View {
-    @ObservedObject var vm = AudioPlayer()
+    @StateObject var vm: AudioPlayer
     let item: SongModel
     @Binding var showBottomTab: Bool
     @State private var h: CGFloat = 40
@@ -18,13 +18,7 @@ struct PlayerView: View {
         ZStack{
             
             ScrollView {
-                Button {
-                  showBottomTab = false
-                } label: {
-                    Text("clicke me")
-                        .padding(.top, 200)
-                }
-
+                
                 VStack(alignment:.leading){
                     ImageView(url: item.artist.picture!)
                         .cornerRadius(30)
@@ -32,23 +26,34 @@ struct PlayerView: View {
                         
                     
                     VStack(alignment: .leading, spacing: 10){
-                        Text(item.title)
+                        Text(item.title ?? "Title")
                             .font(.headline)
                             .foregroundColor(.white)
                         
                         Text(item.artist.name)
                             .foregroundColor(.white)
+                        
+                        
                     }//END OF VSTACK
                     .padding(.vertical, 30)
-                    Divider()
-                        .frame(alignment: .leading)
-                        .background(Color.lightBackground)
-                        .overlay(
-                            Divider()
-                                .frame(width: 100, height: 2, alignment: .leading)
-                                .background(Color.white)
-                        )
+                    HStack {
+                        Text("\(Int(vm.currentTime))")
+                            .foregroundColor(.white)
+                        ZStack(alignment:.leading) {
+                            RoundedRectangle(cornerRadius: 1, style: .continuous)
+                                .frame(height: 2)
+                                .foregroundStyle(Color.lightBackground)
+                            RoundedRectangle(cornerRadius: 1, style: .continuous)
+                                .frame(width: 60,height: 2)
+                                .foregroundStyle(Color.white)
+                        }
+
+                        Text("-\(Int(vm.duration) - Int(vm.currentTime))")
+                            .foregroundColor(.white)
+                    }
+                   
                     control
+                    
                     Spacer()
                 }
                 
@@ -83,6 +88,12 @@ struct PlayerView: View {
            
             
         }// END OF ZSTACK
+        .onAppear{
+            showBottomTab = false
+//            vm.stop()
+            vm.load(song: item)
+            vm.play(song: item)
+        }
         .onDisappear{
             showBottomTab = true
         }
@@ -99,7 +110,8 @@ struct PlayerView: View {
                 
             }
             Spacer()
-            ControlButton(type: .play, width: 50, height: 50, iconSize: 20) {
+            ControlButton(type: vm.isPlaying ? .pause : .play, width: 50, height: 50, iconSize: 20) {
+
                 if vm.isPlaying {
                     vm.pause()
                 } else {
@@ -122,7 +134,7 @@ struct PlayerView: View {
 struct PlayerView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
-            PlayerView(item: demoSong[0], showBottomTab: .constant(true))
+            PlayerView(vm: AudioPlayer(), item: demoSong[0], showBottomTab: .constant(true))
         }
         
     }
