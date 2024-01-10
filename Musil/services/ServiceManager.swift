@@ -28,6 +28,28 @@ class ServiceManager {
     
     let BASE_URL = "https://api.deezer.com/"
     
+    
+    func getArtist(id: Int, completionHandler: @escaping (Result<Artist, ApiError>) -> ()) async {
+        let artistUrl = "\(BASE_URL)/artist/\(id)"
+        
+        guard let url = URL(string: artistUrl) else {
+            completionHandler(.failure(ApiError.InvalidUrl))
+            return
+        }
+        
+        await self.loadAndDecode(url: url, completionHandler: completionHandler)
+    }
+    
+    func getArtistTracks(id: Int, completionHandler: @escaping (Result<TracksResponse, ApiError>) -> ()) async {
+        let trasksUrl = "\(BASE_URL)artist/\(id)/top?limit=10"
+        
+        guard let url = URL(string: trasksUrl) else {
+            completionHandler(.failure(ApiError.InvalidUrl))
+            return
+        }
+        
+        await self.loadAndDecode(url: url, completionHandler: completionHandler)
+    }
    
     
     func getSongs(completionHandler: @escaping (Result<SongResponse, ApiError>) -> ()) async {

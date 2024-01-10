@@ -67,7 +67,7 @@ struct SongModel: Codable , Identifiable, Hashable {
 
 
 let demoSong: [SongModel] = [
-    .init(id: 2, title: "Unavailable", titleShort: "Unav", titleVersion: "v3", link: "df", duration: 8, position: 2, diskNumber: 2, rank: 1, releaseDate: "sfdfjdfj", explicitLyrics: false, explicitContentLyrics: 3, explicitContentCover: 4, preview: "edfg", availableCountries: [":d"], md5Image: "https://api.deezer.com/genre/0/image", artist: .init(id: 2, name: "Davido", link: "hrrtsc", share: "sfdg", picture: "sfdd", pictureSmall: "sdsf", pictureMedium: "sfd", pictureBig: "sfdf", pictureXl: "sdfd", radio: true, tracklist: "adsfd", type: "sdfd"), album: nil,  type: "kdnsf")
+    .init(id: 2, title: "Unavailable", titleShort: "Unav", titleVersion: "v3", link: "df", duration: 8, position: 2, diskNumber: 2, rank: 1, releaseDate: "sfdfjdfj", explicitLyrics: false, explicitContentLyrics: 3, explicitContentCover: 4, preview: "edfg", availableCountries: [":d"], md5Image: "https://api.deezer.com/genre/0/image", artist: .init(id: 2, name: "Davido", link: "hrrtsc", share: "sfdg", picture: "sfdd", pictureSmall: "sdsf", pictureMedium: "sfd", pictureBig: "sfdf", pictureXl: "sdfd", radio: true, tracklist: "adsfd", type: "sdfd", nb_fan: 2), album: nil,  type: "kdnsf")
 ]
 
 
