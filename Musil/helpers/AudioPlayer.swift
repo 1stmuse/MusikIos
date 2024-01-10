@@ -11,28 +11,13 @@ import AVFoundation
 
 class AudioPlayer: ObservableObject {
     
-    
     private var audioPlayer: AVPlayer?
     private var audioPlayer2: AVAudioPlayer?
     @Published var currentSongPlaying: SongModel? = nil
     @Published private(set) var isPlaying:Bool = false
     @Published var duration: Double = 0.0
     @Published var currentTime: Double = 0.0
-    
-    //    init(currentSongPlaying: SongModel){
-    //        self.currentSongPlaying = currentSongPlaying
-    //
-    //        self.audioPlayer = try? AVAudioPlayer(contentsOf: URL(string: currentSongPlaying.preview)!)
-    //
-    //    }
-    
-    init () {
         
-    }
-    
-    deinit {
-        
-    }
     
     func load(song: SongModel){
         
@@ -60,40 +45,21 @@ class AudioPlayer: ObservableObject {
            }
         }
         
-         
-       
-        
     }
     
     func play(song: SongModel){
-        
-//        if let id = currentSongPlaying?.id {
-//            guard song.id != id else {return}
-//        }
-        
         
         guard let player = audioPlayer else {
             print("cannot play diw")
             return
         }
         
-//        if isPlaying == true {
-//            player.pause()
-//            isPlaying = false
-//        } else {
             player.play()
             isPlaying = true
             player.addProgressObserver { dur, tm in
-              
                 self.duration = dur
                 self.currentTime = tm
             }
-//        }
-        
-        
-        
-        
-
         
     }
     
@@ -104,11 +70,8 @@ class AudioPlayer: ObservableObject {
       
         audioPlayer?.replaceCurrentItem(with: nil)
         isPlaying = false
-      
         
     }
-    
- 
     
     func pause(){
         
@@ -116,26 +79,10 @@ class AudioPlayer: ObservableObject {
             return
         }
         isPlaying = false
-        
         audioPlayer?.pause()
-        
-        //        duration = audioPlayer?.currentItem?.duration ?? CMTime()
-        //        currentTime = audioPlayer?.currentTime()
         
     }
     
-//    func removePeriodicTimeObserver() {
-//        
-//        guard let player = audioPlayer else {
-//            print("cannot play mediw")
-//            return
-//        }
-//        // If a time observer exists, remove it
-//        if let token = timeObserverToken {
-//            player.removeTimeObserver(token)
-//            timeObserverToken = nil
-//        }
-//    }
     
 }
 
